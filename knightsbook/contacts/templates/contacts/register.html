@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<script src="{% static 'md5.js' %}"></script>
 	<script src="{% static 'main.js' %}"></script>
 </head>
 <body>
@@ -23,8 +24,8 @@
 	<form action="{% url 'contacts:register' %}" method="post">
 		{% csrf_token %}
 		<input type="email" name="email" placeholder="Email address" required autofocus>
-		<input type="password" name="password" placeholder="Password" required>
-		<button type="submit">Register</button>
+		<input type="password" name="password" id="password" placeholder="Password" required>
+		<button type="submit" onclick="return hashpw()">Register</button>
 	</form>
 </body>
 </html>
