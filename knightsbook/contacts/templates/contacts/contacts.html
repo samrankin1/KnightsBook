@@ -20,6 +20,11 @@
 	<br />
 	<a href="{% url 'contacts:create' %}">New Contact</a>
 
+	<form action="{% url 'contacts:contacts' %}">
+		<input type="text" name="search" placeholder="Search" maxlength="40" {% if search %} value="{{ search }}" {% endif %}>
+		<button type="submit">Filter</button>
+	</form>
+
 	{% if contacts %}
 	<ul>
 		{% for id, name_first, name_last, phone_home, phone_work, addr_street, addr_city in contacts %}
@@ -29,7 +34,7 @@
 		{% endfor %}
 	</ul>
 	{% else %}
-	<h2>No contacts yet!</h2>
+	<h2>No contacts found</h2>
 	{% endif %}
 </body>
 </html>

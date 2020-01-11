@@ -107,11 +107,14 @@ def contacts(request):
 		notify.info(request, 'You must be logged in to view your contacts')
 		return render(request, 'contacts/login.html')
 
-	# Load user's contacts and pass them to template
 	user = request.session['user']
-	contacts = db.get_user_contacts(user)
 
-	return render(request, 'contacts/contacts.html', {'contacts': contacts})
+	# Load user's contacts and pass them to template
+	search = request.GET.get('search')
+	contacts = db.get_user_contacts(user, search)
+
+	return render(request, 'contacts/contacts.html',
+		{'search': search, 'contacts': contacts})
 
 def create(request):
 	if not 'user' in request.session:

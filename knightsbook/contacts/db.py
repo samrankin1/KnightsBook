@@ -148,6 +148,12 @@ contacts_by_owner_sql = """
 	WHERE owner = %s
 """
 
+contacts_by_owner_filtered_sql = """
+	SELECT id, name_first, name_last, phone_home, phone_work, addr_street, addr_city
+	FROM contacts_contacts
+	WHERE owner = %s AND (SELECT name_first || ' ' || name_last) LIKE %s
+"""
+
 contact_update_sql = """
 	UPDATE contacts_contacts
 	SET name_first = %s, name_last = %s, phone_home = %s, phone_work = %s, addr_street = %s, addr_city = %s
@@ -171,11 +177,17 @@ def get_contact(contact):
 		(contact, )
 	)
 
-def get_user_contacts(user):
-	return _fetchall(
-		contacts_by_owner_sql,
-		(user, )
-	)
+def get_user_contacts(user, search=None):
+	if search:
+		return _fetchall(
+			contacts_by_owner_filtered_sql,
+			(user, '%' + search + '%')
+		)
+	else:
+		return _fetchall(
+			contacts_by_owner_sql,
+			(user, )
+		)
 
 def update_contact(contact, name_first, name_last, phone_home, phone_work, addr_street, addr_city):
 	_execute(
