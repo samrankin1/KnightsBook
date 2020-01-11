@@ -1,0 +1,34 @@
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="{% static 'main.js' %}"></script>
+</head>
+<body>
+	{% if messages %}
+	<ul>
+		{% for message in messages %}
+		<li>
+			{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}ERROR: {% endif %}
+			{{ message }}
+		</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+
+	<a href="{% url 'contacts:index' %}">Home</a><br />
+	<a href="{% url 'contacts:logout' %}">Logout</a>
+
+	<h1>Contact View</h1>
+
+	First Name: {{ name_first }}<br />
+	Last Name: {{ name_last }}<br />
+	Home Phone: {{ phone_home }}<br />
+	Work Phone: {{ phone_work }}<br />
+	Street Address: {{ addr_street }}<br />
+	Address City: {{ addr_city }}<br /><br />
+
+	<a href="{% url 'contacts:edit' id %}">Edit</a><br />
+	<a href="{% url 'contacts:delete' id %}">Delete</a>
+</body>
+</html>

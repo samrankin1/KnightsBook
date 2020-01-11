@@ -1,0 +1,35 @@
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="{% static 'main.js' %}"></script>
+</head>
+<body>
+	{% if messages %}
+	<ul>
+		{% for message in messages %}
+		<li>
+			{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}ERROR: {% endif %}
+			{{ message }}
+		</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+
+	<a href="{% url 'contacts:logout' %}">Logout</a>
+	<br />
+	<a href="{% url 'contacts:create' %}">New Contact</a>
+
+	{% if contacts %}
+	<ul>
+		{% for id, name_first, name_last, phone_home, phone_work, addr_street, addr_city in contacts %}
+		<li>
+			<a href="{% url 'contacts:contact' id %}">{{ name_first }} {{ name_last }}</a>
+		</li>
+		{% endfor %}
+	</ul>
+	{% else %}
+	<h2>No contacts yet!</h2>
+	{% endif %}
+</body>
+</html>

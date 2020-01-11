@@ -1,0 +1,30 @@
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="{% static 'main.js' %}"></script>
+</head>
+<body>
+	{% if messages %}
+	<ul>
+		{% for message in messages %}
+		<li>
+			{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}ERROR: {% endif %}
+			{{ message }}
+		</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+
+	<a href="{% url 'contacts:index' %}">Home</a><br /><br />
+
+	<h1>Register</h1>
+
+	<form action="{% url 'contacts:register' %}" method="post">
+		{% csrf_token %}
+		<input type="email" name="email" placeholder="Email address" required autofocus>
+		<input type="password" name="password" placeholder="Password" required>
+		<button type="submit">Register</button>
+	</form>
+</body>
+</html>
