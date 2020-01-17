@@ -15,9 +15,10 @@
 		{% endfor %}
 	</ul>
 	{% endif %}
-
+	<!--
 	<a href="{% url 'contacts:index' %}">Home</a><br />
 	<a href="{% url 'contacts:logout' %}">Logout</a>
+	-->
 
 	<h1>Contact View</h1>
 
@@ -28,7 +29,9 @@
 	Street Address: {{ addr_street }}<br />
 	Address City: {{ addr_city }}<br /><br />
 
-	<a href="{% url 'contacts:edit' id %}">Edit</a><br />
-	<a href="{% url 'contacts:delete' id %}">Delete</a>
+	<div class="footnote">
+		<a href="{% url 'contacts:index' %}">Home</a><br />
+		<a href="{% url 'contacts:logout' %}">Logout</a>
+	</div>
 </body>
 </html>

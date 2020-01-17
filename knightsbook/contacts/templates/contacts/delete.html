@@ -2,36 +2,59 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,800&display=swap&subset=latin-ext" rel="stylesheet">
+
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<link href="{% static 'styles.css' %}" rel="stylesheet">
+	<script src="{% static 'jquery.js' %}"></script>
 	<script src="{% static 'main.js' %}"></script>
+
 </head>
-<body>
+<body class="form-pages">
 	{% if messages %}
-	<ul>
+	<ul class="alert">
+		<div class="close-alert">✖️</div>
 		{% for message in messages %}
 		<li>
-			{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}ERROR: {% endif %}
-			{{ message }}
+		{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+			<div class="alert-red">
+				ERROR: {{ message }}
+			</div>
+			{% else %}
+			<div class="alert-blue">
+				{{ message }} {% endif %}
+			</div>
 		</li>
 		{% endfor %}
 	</ul>
 	{% endif %}
 
-	<a href="{% url 'contacts:index' %}">Home</a><br />
-	<a href="{% url 'contacts:logout' %}">Logout</a>
-
-	<h1>Are You Sure You Want To Delete This Contact?</h1>
-
-	First Name: {{ name_first }}<br />
-	Last Name: {{ name_last }}<br />
-	Home Phone: {{ phone_home }}<br />
-	Work Phone: {{ phone_work }}<br />
-	Street Address: {{ addr_street }}<br />
-	Address City: {{ addr_city }}<br /><br />
+	<div class="main-container">
+		<div style="text-align:left">
+		<h1 style="font-size:24px; font-weight:800; margin-bottom:30px">Are You Sure You Want To Delete This Contact?</h1>
+		<b>First Name:</b> {{ name_first }}<br />
+		<b>Last Name:</b> {{ name_last }}<br />
+		<b>Home Phone:</b> {{ phone_home }}<br />
+		<b>Work Phone:</b> {{ phone_work }}<br />
+		<b>Street Address:</b> {{ addr_street }}<br />
+		<b>Address City:</b> {{ addr_city }}<br /><br />
+	</div>
 
 	<form action="{% url 'contacts:delete' id %}" method="post">
 		{% csrf_token %}
 		<input type="hidden" name="confirm" value="true">
-		<button type="submit">Confirm</button>
+		<button type="submit" class="btn">Confirm</button>
 	</form>
+
+	<div class="footnote">
+		<a href="{% url 'contacts:index' %}">Home</a><br />
+		<a href="{% url 'contacts:logout' %}">Logout</a>
+	</div>
+	</div>
 </body>
 </html>

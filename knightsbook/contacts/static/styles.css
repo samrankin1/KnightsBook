@@ -1,0 +1,233 @@
+body {
+	font-family: 'Raleway', sans-serif;
+	background-color: #f5f5f5;
+	margin: 0px;
+	padding: 0px;
+}
+
+.form-pages {
+	align-items: center;
+	display: flex;
+}
+
+h1 {
+	font-weight: 400;
+	font-size: 45px;
+	margin: 10px auto;
+}
+
+b {
+	font-weight: 800;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0px;
+}
+
+button {
+	margin-top: 25px;
+}
+
+.alert-red {
+	padding: 10px;
+	color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.alert-blue {
+	padding: 10px;
+	color: #004085;
+	background-color: #cce5ff;
+	border-color: #b8daff;
+}
+
+.alert {
+	text-align: center;
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	margin: 0;
+	padding:0;
+    border: 1px solid transparent;
+    display: none;
+    z-index: 9999;
+}
+
+
+.close-alert {
+	float: right;
+    display: inline;
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    margin: 0;
+    font-weight: bold;
+}
+
+.main-container {
+	text-align: center;
+	margin: 0 auto;
+	max-width: 400px;
+	width: 100%;
+}
+
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.form-signin .form-control {
+	width: 100%;
+	position: relative;
+	padding: 10px;
+	font-size: 16px;
+	border-radius: .25rem;
+	line-height: 1.5;
+	color: #495057;
+	background-color: #fff;
+	border: 1px solid #ced4da;
+}
+
+.btn {
+	display: block;
+    width: 100%;
+    padding: .5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: .3rem;
+    margin-bottom: 10px;
+}
+
+.footnote a {
+	display: inline-block;
+	text-decoration: underline;
+	color: black;
+}
+
+.header {
+    top: 0;
+    left: 0;
+    right: 0;
+    border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: black;
+    display: block;
+}
+
+.header h1 {
+	text-align: left;
+	padding: 10px 10px 10px 20px;
+	margin: 0;
+}
+
+.topbar {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: black;
+	position: -webkit-sticky; /* Safari */
+	position: sticky;
+	top: 0;
+}
+
+.topbar a {
+	padding: 5px;
+	font-family: sans-serif;
+	text-decoration: none;
+	color: black;
+}
+
+.sidebar {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 20%;
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-right-color: black;
+	height: 100%; 
+	position: fixed;
+	overflow: auto;
+}
+
+.sidebar ul {
+	margin: 0;
+	padding: 0;
+}
+
+.sidebar li {
+	margin:0;
+	padding:10;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: #aeaeae;
+}
+
+.sidebar a {
+	font-family: sans-serif;
+	font-size: 14px;
+	text-decoration: none;
+	color: black;
+}
+
+.searchbar {
+	margin: 0;
+	padding: 0;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: black;
+	position: -webkit-sticky; 
+	position: sticky;
+	top: 0;
+}
+
+.searchbar input {
+	margin: 3px 0 3px 0;
+	padding: 2px;
+	border-radius: 1rem;
+	border-width: 1px;
+	border-style: solid;
+	border-color: black;
+	width: 100%;
+}
+
+.searchbar form {
+	margin: 0;
+	padding: 0;
+}
+
+.no-items {
+	height: 80%;
+	width: 100%;
+}
+
+.content-container {
+	top: 0;
+	height: 80%;
+	width:80%;
+	margin-left:20%;
+	justify-content: center;
+    align-content: center;
+    display: flex;
+}}
+
+.content {
+	width: 400px;
+}
+
+h2 {
+	font-family: sans-serif;
+	font-size: 19px;
+	color: #aeaeae;
+	padding: 10px;
+}
