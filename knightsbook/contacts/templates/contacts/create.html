@@ -1,4 +1,4 @@
-{% load static %}
+<!--{% load static %}-->
 <html>
 <head>
 	<meta charset="utf-8">
@@ -10,26 +10,26 @@
 	<!-- jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-	<link href="{% static 'styles.css' %}" rel="stylesheet">
-	<script src="{% static 'jquery.js' %}"></script>
-	<script src="{% static 'main.js' %}"></script>
+	<link href="static/styles.css" rel="stylesheet">
+	<script src="static/jquery.js"></script>
+	<script src="static/main.js"></script>
 
 </head>
 <body class="form-pages">
-	{% if messages %}
+	<!--{% if messages %}-->
 	<ul>
-		{% for message in messages %}
+		<!--{% for message in messages %}-->
 		<li>
-			{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}ERROR: {% endif %}
-			{{ message }}
+			<!--{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}ERROR: {% endif %}
+			{{ message }}-->
 		</li>
-		{% endfor %}
+		<!--{% endfor %}-->
 	</ul>
-	{% endif %}
+	<!--{% endif %}-->
 	<div class="main-container">
 		<h1>Create contact</h1>
 	<form action="{% url 'contacts:create' %}" method="post" class="form-signin" >
-		{% csrf_token %}
+		<!--{% csrf_token %}-->
 		<input type="text" name="name_first" placeholder="First name" maxlength="40" class="form-control" required autofocus>
 		<input type="text" name="name_last" placeholder="Last name" maxlength="40" class="form-control" required>
 		<input type="text" name="phone_home" placeholder="Home phone" maxlength="20" class="form-control" >
@@ -39,8 +39,8 @@
 		<button type="submit" class="btn">Create</button>
 	</form>
 	<div class="footnote">
-		<a href="{% url 'contacts:index' %}">Home</a><br />
-		<a href="{% url 'contacts:logout' %}">Logout</a>
+		<a href="home.html" class="veryBottomBTN">Home</a><br />
+		<a href="{% url 'contacts:logout' %}" class="veryBottomBTN">Logout</a>
 	</div>
 	</div>
 </body>
