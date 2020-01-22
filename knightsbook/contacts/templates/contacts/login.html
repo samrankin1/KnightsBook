@@ -30,11 +30,13 @@
 		<!--{% endfor %}-->
 	</ul>
 	<!--{% endif %}-->
+	<div class="headerCorner">
+		<h1><b>knights</b>book</h1>
+	</div>
 
 	<div class="main-container">
-		<h1><b>knights</b>book</h1>
-
 		<img class = "logoLogin" src="images/logo.png" alt="">
+		<h1>Log in</h1>
 
 		<form action="{% url 'contacts:login' %}" method="post" class="form-signin">
 			<!--{% csrf_token %}-->
@@ -46,5 +48,9 @@
 			<a href="register.html" class = "veryBottomBTN">Register</a></a>
 		</div>
 	</div>
+
+	<footer>
+		<p>&#169;Copyright 2020 Group 1</p>
+	</footer>
 </body>
 </html>
