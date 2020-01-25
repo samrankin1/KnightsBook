@@ -33,9 +33,13 @@ create_contacts_sql = """
 		phone_work CHAR(20),
 		addr_street CHAR(40),
 		addr_city CHAR(40),
+		ucf_major CHAR(40),
+		ucf_graduation CHAR(20),
+		ucf_role CHAR(20),
 		FOREIGN KEY (owner)
 			REFERENCES contacts_users(id)
-				ON DELETE CASCADE
+				ON DELETE CASCADE,
+		CHECK (ucf_role in ('', 'Student', 'Teaching Assistant', 'Professor'))
 	)
 """
 

@@ -132,31 +132,31 @@ def get_activation(token):
 # Contact queries
 
 insert_contact_sql = """
-	INSERT INTO contacts_contacts (owner, name_first, name_last, phone_home, phone_work, addr_street, addr_city)
-	VALUES (%s, %s, %s, %s, %s, %s, %s)
+	INSERT INTO contacts_contacts (owner, name_first, name_last, phone_home, phone_work, addr_street, addr_city, ucf_major, ucf_graduation, ucf_role)
+	VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
 """
 
 contact_by_id_sql = """
-	SELECT owner, name_first, name_last, phone_home, phone_work, addr_street, addr_city
+	SELECT owner, name_first, name_last, phone_home, phone_work, addr_street, addr_city, ucf_major, ucf_graduation, ucf_role
 	FROM contacts_contacts
 	WHERE id = %s
 """
 
 contacts_by_owner_sql = """
-	SELECT id, name_first, name_last, phone_home, phone_work, addr_street, addr_city
+	SELECT id, name_first, name_last, phone_home, phone_work, addr_street, addr_city, ucf_major, ucf_graduation, ucf_role
 	FROM contacts_contacts
 	WHERE owner = %s
 """
 
 contacts_by_owner_filtered_sql = """
-	SELECT id, name_first, name_last, phone_home, phone_work, addr_street, addr_city
+	SELECT id, name_first, name_last, phone_home, phone_work, addr_street, addr_city, ucf_major, ucf_graduation, ucf_role
 	FROM contacts_contacts
 	WHERE owner = %s AND (SELECT name_first || ' ' || name_last) LIKE %s
 """
 
 contact_update_sql = """
 	UPDATE contacts_contacts
-	SET name_first = %s, name_last = %s, phone_home = %s, phone_work = %s, addr_street = %s, addr_city = %s
+	SET name_first = %s, name_last = %s, phone_home = %s, phone_work = %s, addr_street = %s, addr_city = %s, ucf_major = %s, ucf_graduation = %s, ucf_role = %s
 	WHERE id = %s
 """
 
@@ -165,10 +165,10 @@ contact_delete_sql = """
 	WHERE id = %s
 """
 
-def insert_contact(owner, name_first, name_last, phone_home, phone_work, addr_street, addr_city):
+def insert_contact(owner, name_first, name_last, phone_home, phone_work, addr_street, addr_city, ucf_major, ucf_graduation, ucf_role):
 	_execute(
 		insert_contact_sql,
-		(owner, name_first, name_last, phone_home, phone_work, addr_street, addr_city)
+		(owner, name_first, name_last, phone_home, phone_work, addr_street, addr_city, ucf_major, ucf_graduation, ucf_role)
 	)
 
 def get_contact(contact):
@@ -189,10 +189,10 @@ def get_user_contacts(user, search=None):
 			(user, )
 		)
 
-def update_contact(contact, name_first, name_last, phone_home, phone_work, addr_street, addr_city):
+def update_contact(contact, name_first, name_last, phone_home, phone_work, addr_street, addr_city, ucf_major, ucf_graduation, ucf_role):
 	_execute(
 		contact_update_sql,
-		(name_first, name_last, phone_home, phone_work, addr_street, addr_city, contact)
+		(name_first, name_last, phone_home, phone_work, addr_street, addr_city, ucf_major, ucf_graduation, ucf_role, contact)
 	)
 
 def delete_contact(contact):

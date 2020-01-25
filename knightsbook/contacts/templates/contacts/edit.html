@@ -1,4 +1,4 @@
-<!--{% load static %}-->
+{% load static %}
 <html>
 <head>
 	<meta charset="utf-8">
@@ -10,48 +10,56 @@
 	<!-- jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-	<link href="static/styles.css" rel="stylesheet">
-	<script src="static/jquery.js"></script>
-	<script src="static/main.js"></script>
+	<link href="{% static 'styles.css' %}" rel="stylesheet">
+	<script src="{% static 'jquery.js' %}"></script>
+	<script src="{% static 'main.js' %}"></script>
 
 </head>
 <body class="form-pages">
-	<!--{% if messages %}-->
+	{% if messages %}
 	<ul class="alert">
 		<div class="close-alert">✖️</div>
-		<!--{% for message in messages %}-->
+		{% for message in messages %}
 		<li>
-		<!--{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}-->
+		{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
 			<div class="alert-red">
-				<!--ERROR: {{ message }}-->
+				ERROR: {{ message }}
 			</div>
-			<!--{% else %}-->
+		{% else %}
 			<div class="alert-blue">
-				<!--{{ message }} {% endif %}-->
+				{{ message }}
 			</div>
+		{% endif %}
 		</li>
-		<!--{% endfor %}-->
+		{% endfor %}
 	</ul>
-	<!--{% endif %}-->
-
-	<div class="headerCorner">
-		<h1><b>knights</b>book</h1>
-	</div>
+	{% endif %}
 
 	<div class="main-container">
+		<div class="headerCorner">
+			<h1><b>knights</b>book</h1>
+		</div>
 	<h1>Edit Contact</h1>
 	<form action="{% url 'contacts:edit' id %}" method="post" class="form-signin">
-		<!--{% csrf_token %}-->
+		{% csrf_token %}
 		<input type="text" name="name_first" placeholder="First name" maxlength="40" value="{{ name_first }}" class="form-control" required autofocus>
 		<input type="text" name="name_last" placeholder="Last name" maxlength="40" value="{{ name_last }}" class="form-control" required>
 		<input type="text" name="phone_home" placeholder="Home phone" maxlength="20" value="{{ phone_home }}" class="form-control">
 		<input type="text" name="phone_work" placeholder="Work phone" maxlength="20" value="{{ phone_work }}" class="form-control">
 		<input type="text" name="addr_street" placeholder="Street address" maxlength="40" value="{{ addr_street }}" class="form-control">
 		<input type="text" name="addr_city" placeholder="Address city" maxlength="40" value="{{ addr_city }}" class="form-control">
+		<input type="text" name="ucf_major" placeholder="UCF major" maxlength="40" value="{{ ucf_major }}" class="form-control">
+		<input type="text" name="ucf_graduation" placeholder="UCF graduation" maxlength="20" value="{{ ucf_graduation }}" class="form-control">
+		<select name="ucf_role">
+			<option value="">Select UCF Role</option>
+			<option value="Student" {% if ucf_role == 'Student' %}selected{% endif %}>Student</option>
+			<option value="Teaching Assistant" {% if ucf_role == 'Teaching Assistant' %}selected{% endif %}>Teaching Assistant</option>
+			<option value="Professor" {% if ucf_role == 'Professor' %}selected{% endif %}>Professor</option>
+		</select>
 		<button type="submit" class="btn">Update</button>
 	</form>
 	<div class="footnote">
-		<a href="home.html" class="veryBottomBTN">Home</a><br />
+		<a href="{% url 'contacts:index' %}" class="veryBottomBTN">Home</a><br />
 		<a href="{% url 'contacts:logout' %}" class="veryBottomBTN">Logout</a>
 	</div>
 

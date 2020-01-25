@@ -2,23 +2,30 @@
 <html>
 <head>
 	<meta charset="utf-8">
+
+	<link href="{% static 'styles.css' %}" rel="stylesheet">
+	<script src="{% static 'jquery.js' %}"></script>
 	<script src="{% static 'main.js' %}"></script>
 </head>
 <body>
 	{% if messages %}
-	<ul>
+	<ul class="alert">
+		<div class="close-alert">✖️</div>
 		{% for message in messages %}
 		<li>
-			{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}ERROR: {% endif %}
-			{{ message }}
+		{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+			<div class="alert-red">
+				ERROR: {{ message }}
+			</div>
+		{% else %}
+			<div class="alert-blue">
+				{{ message }}
+			</div>
+		{% endif %}
 		</li>
 		{% endfor %}
 	</ul>
 	{% endif %}
-	<!--
-	<a href="{% url 'contacts:index' %}">Home</a><br />
-	<a href="{% url 'contacts:logout' %}">Logout</a>
-	-->
 
 	<h1>Contact View</h1>
 
@@ -27,11 +34,14 @@
 	Home Phone: {{ phone_home }}<br />
 	Work Phone: {{ phone_work }}<br />
 	Street Address: {{ addr_street }}<br />
-	Address City: {{ addr_city }}<br /><br />
+	Address City: {{ addr_city }}<br />
+	UCF Major: {{ ucf_major }}<br />
+	UCF Graduation: {{ ucf_graduation }}<br />
+	UCF Role: {{ ucf_role }}<br /><br />
 
 	<div class="footnote">
-		<a href="{% url 'contacts:index' %}">Home</a><br />
-		<a href="{% url 'contacts:logout' %}">Logout</a>
+		<a href="{% url 'contacts:edit' id %}">Edit</a><br />
+		<a href="{% url 'contacts:delete' id %}">Delete</a>
 	</div>
 </body>
 </html>

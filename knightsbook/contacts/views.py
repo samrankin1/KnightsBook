@@ -12,12 +12,12 @@ def home():
 
 def index(request):
 	if not 'user' in request.session:
-		notify.info(request, 'You are NOT logged in')
+		# notify.info(request, 'You are NOT logged in')
 		return render(request, 'contacts/login.html')
 
 	else:
 		user = request.session['user']
-		notify.info(request, "You are logged in as '" + str(db.get_email(user)) + "'")
+		# notify.info(request, "You are logged in as '" + str(db.get_email(user)) + "'")
 		return redirect('contacts:contacts')
 
 def register(request):
@@ -35,7 +35,7 @@ def register(request):
 			notify.error(request, 'User already exists!')
 
 		else:
-			notify.info(request, "Register Email = '" + email + "', Password = '" + password + "'")
+			# notify.info(request, "Register Email = '" + email + "', Password = '" + password + "'")
 			db.insert_user(email, password)
 
 			token = str(uuid.uuid4())
@@ -90,7 +90,7 @@ def login(request):
 
 			else:
 				request.session['user'] = user
-				notify.info(request, "Successful login as '" + email + "'")
+				# notify.info(request, "Successful login as '" + email + "'")
 
 	return home()
 
@@ -131,11 +131,14 @@ def create(request):
 		phone_work = params.get('phone_work')
 		addr_street = params.get('addr_street')
 		addr_city = params.get('addr_city')
+		ucf_major = params.get('ucf_major')
+		ucf_graduation = params.get('ucf_graduation')
+		ucf_role = params.get('ucf_role')
 
 		if not name_first or not name_last:
 			return HttpResponseBadRequest("Fields 'name_first' and 'name_last' are required")
 		else:
-			db.insert_contact(user, name_first, name_last, phone_home, phone_work, addr_street, addr_city)
+			db.insert_contact(user, name_first, name_last, phone_home, phone_work, addr_street, addr_city, ucf_major, ucf_graduation, ucf_role)
 			notify.info(request, "Created contact '" + name_first + " " + name_last + "'")
 			return home()
 
@@ -153,14 +156,15 @@ def contact(request, contact_id):
 	if not contact:
 		return HttpResponseNotFound('Contact not found')
 
-	owner, name_first, name_last, phone_home, phone_work, addr_street, addr_city = contact
+	owner, name_first, name_last, phone_home, phone_work, addr_street, addr_city, ucf_major, ucf_graduation, ucf_role = contact
 
 	if owner != user:
 		return HttpResponseBadRequest('You are not authorized to view this contact')
 	else:
 		return render(request, 'contacts/contact.html',
 			{'id': contact_id, 'name_first': name_first, 'name_last': name_last, 'phone_home': phone_home,
-			'phone_work': phone_work, 'addr_street': addr_street, 'addr_city': addr_city})
+			'phone_work': phone_work, 'addr_street': addr_street, 'addr_city': addr_city,
+			'ucf_major': ucf_major, 'ucf_graduation': ucf_graduation, 'ucf_role': ucf_role})
 
 def edit(request, contact_id):
 	if not 'user' in request.session:
@@ -173,7 +177,7 @@ def edit(request, contact_id):
 	if not contact:
 		return HttpResponseNotFound('Contact not found')
 
-	owner, name_first, name_last, phone_home, phone_work, addr_street, addr_city = contact
+	owner, name_first, name_last, phone_home, phone_work, addr_street, addr_city, ucf_major, ucf_graduation, ucf_role = contact
 
 	if owner != user:
 		return HttpResponseBadRequest('You are not authorized to edit this contact')
@@ -186,18 +190,22 @@ def edit(request, contact_id):
 		phone_work = params.get('phone_work')
 		addr_street = params.get('addr_street')
 		addr_city = params.get('addr_city')
+		ucf_major = params.get('ucf_major')
+		ucf_graduation = params.get('ucf_graduation')
+		ucf_role = params.get('ucf_role')
 
 		if not name_first or not name_last:
 			return HttpResponseBadRequest("Fields 'name_first' and 'name_last' are required")
 		else:
-			db.update_contact(contact_id, name_first, name_last, phone_home, phone_work, addr_street, addr_city)
+			db.update_contact(contact_id, name_first, name_last, phone_home, phone_work, addr_street, addr_city, ucf_major, ucf_graduation, ucf_role)
 			notify.info(request, "Updated contact '" + name_first + " " + name_last + "'")
-			return redirect('contacts:contact', contact_id)
+			return redirect('contacts:contacts')
 
 	else:
 		return render(request, 'contacts/edit.html',
 			{'id': contact_id, 'name_first': name_first, 'name_last': name_last, 'phone_home': phone_home,
-			'phone_work': phone_work, 'addr_street': addr_street, 'addr_city': addr_city})
+			'phone_work': phone_work, 'addr_street': addr_street, 'addr_city': addr_city,
+			'ucf_major': ucf_major, 'ucf_graduation': ucf_graduation, 'ucf_role': ucf_role})
 
 def delete(request, contact_id):
 	if not 'user' in request.session:
@@ -210,7 +218,7 @@ def delete(request, contact_id):
 	if not contact:
 		return HttpResponseNotFound('Contact not found')
 
-	owner, name_first, name_last, phone_home, phone_work, addr_street, addr_city = contact
+	owner, name_first, name_last, phone_home, phone_work, addr_street, addr_city, ucf_major, ucf_graduation, ucf_role = contact
 
 	if owner != user:
 		return HttpResponseBadRequest('You are not authorized to delete this contact')
@@ -226,4 +234,5 @@ def delete(request, contact_id):
 	else:
 		return render(request, 'contacts/delete.html',
 			{'id': contact_id, 'name_first': name_first, 'name_last': name_last, 'phone_home': phone_home,
-			'phone_work': phone_work, 'addr_street': addr_street, 'addr_city': addr_city})
+			'phone_work': phone_work, 'addr_street': addr_street, 'addr_city': addr_city,
+			'ucf_major': ucf_major, 'ucf_graduation': ucf_graduation, 'ucf_role': ucf_role})

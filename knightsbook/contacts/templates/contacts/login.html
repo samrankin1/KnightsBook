@@ -1,4 +1,4 @@
-<!--{% load static %}-->
+{% load static %}
 <html>
 <head>
 	<meta charset="utf-8">
@@ -10,26 +10,31 @@
 	<!-- jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-	<link href="static/styles.css" rel="stylesheet">
-	<script src="static/jquery.js"></script>
-	<script src="static/md5.js"></script>
-	<script src="static/main.js"></script>
+	<link href="{% static 'styles.css' %}" rel="stylesheet">
+	<script src="{% static 'jquery.js' %}"></script>
+	<script src="{% static 'md5.js' %}"></script>
+	<script src="{% static 'main.js' %}"></script>
 
 </head>
 <body class="form-pages">
-	<!--{% if messages %}-->
+	{% if messages %}
 	<ul class="alert">
 		<div class="close-alert">✖️</div>
-		<!--{% for message in messages %}-->
+		{% for message in messages %}
 		<li>
-		<div class="alert-blue">
-			<!--{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}ERROR: {% endif %}
-			{{ message }}-->
-		</div>
+		{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+			<div class="alert-red">
+				ERROR: {{ message }}
+			</div>
+		{% else %}
+			<div class="alert-blue">
+				{{ message }}
+			</div>
+		{% endif %}
 		</li>
-		<!--{% endfor %}-->
+		{% endfor %}
 	</ul>
-	<!--{% endif %}-->
+	{% endif %}
 
 	<div class="main-container">
 		<h1><b>knights</b>book</h1>
@@ -37,13 +42,13 @@
 		<img class = "logoLogin" src="images/logo.png" alt="">
 
 		<form action="{% url 'contacts:login' %}" method="post" class="form-signin">
-			<!--{% csrf_token %}-->
+			{% csrf_token %}
 			<input type="email" name="email" placeholder="Email address" class="form-control" required autofocus>
 			<input type="password" name="password" id="password" placeholder="Password" class="form-control" required>
 			<button type="submit" onclick="return hashpw()" class="btn">Login</button>
 		</form>
 		<div class="footnote">
-			<a href="register.html" class = "veryBottomBTN">Register</a></a>
+			<a href="{% url 'contacts:register' %}" class = "veryBottomBTN">Register</a></a>
 		</div>
 	</div>
 </body>

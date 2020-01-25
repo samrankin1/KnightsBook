@@ -1,4 +1,4 @@
-<!--{% load static %}-->
+{% load static %}
 <html>
 <head>
 	<meta charset="utf-8">
@@ -10,34 +10,35 @@
 	<!-- jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-	<link href="static/styles.css" rel="stylesheet">
-	<script src="static/jquery.js"></script>
-	<script src="static/main.js"></script>
+	<link href="{% static 'styles.css' %}" rel="stylesheet">
+	<script src="{% static 'jquery.js' %}"></script>
+	<script src="{% static 'main.js' %}"></script>
 
 </head>
 <body class="form-pages">
-	<!--{% if messages %}-->
+	{% if messages %}
 	<ul class="alert">
 		<div class="close-alert">✖️</div>
-		<!--{% for message in messages %}-->
+		{% for message in messages %}
 		<li>
-		<!--{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}-->
+		{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
 			<div class="alert-red">
-				<!--ERROR: {{ message }}-->
+				ERROR: {{ message }}
 			</div>
-			<!--{% else %}-->
+		{% else %}
 			<div class="alert-blue">
-				<!--{{ message }} {% endif %}-->
+				{{ message }}
 			</div>
+		{% endif %}
 		</li>
-		<!--{% endfor %}-->
+		{% endfor %}
 	</ul>
-	<!--{% endif %}-->
-	<div class="headerCorner">
-		<h1><b>knights</b>book</h1>
-	</div>
+	{% endif %}
 
 	<div class="main-container">
+		<div class="headerCorner">
+			<h1><b>knights</b>book</h1>
+		</div>
 		<div style="text-align:left">
 		<h1 style="font-size:30px; font-weight:800; margin-bottom:30px">Are You Sure You Want To Delete This Contact?</h1>
 		<b>First Name:</b> {{ name_first }}<br />
@@ -45,17 +46,20 @@
 		<b>Home Phone:</b> {{ phone_home }}<br />
 		<b>Work Phone:</b> {{ phone_work }}<br />
 		<b>Street Address:</b> {{ addr_street }}<br />
-		<b>Address City:</b> {{ addr_city }}<br /><br />
+		<b>Address City:</b> {{ addr_city }}<br />
+		<b>UCF Major:</b> {{ ucf_major }}<br />
+		<b>UCF Graduation:</b> {{ ucf_graduation }}<br />
+		<b>UCF Role:</b> {{ ucf_role }}<br /><br />
 	</div>
 
 	<form action="{% url 'contacts:delete' id %}" method="post">
-		<!--{% csrf_token %}-->
+		{% csrf_token %}
 		<input type="hidden" name="confirm" value="true">
 		<button type="submit" class="btn">Confirm</button>
 	</form>
 
 	<div class="footnote">
-		<a href="home.html" class="veryBottomBTN">Home</a><br />
+		<a href="{% url 'contacts:index' %}" class="veryBottomBTN">Home</a><br />
 		<a href="{% url 'contacts:logout' %}" class="veryBottomBTN">Logout</a>
 	</div>
 	</div>
