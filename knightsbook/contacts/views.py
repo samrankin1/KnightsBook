@@ -72,7 +72,7 @@ def login(request):
 		if not email or not password:
 			return HttpResponseBadRequest("Fields 'email' and 'password' are required")
 		else:
-			notify.info(request, "Login Email = '" + email + "', Password = '" + password + "'")
+			# notify.info(request, "Login Email = '" + email + "', Password = '" + password + "'")
 
 			row = db.get_login(email)
 
