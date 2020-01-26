@@ -39,7 +39,7 @@
 	<div class="main-container">
 		<h1><b>knights</b>book</h1>
 
-		<img class = "logoLogin" src="images/logo.png" alt="">
+		<img class = "logoLogin" src="{% static 'logo.png' %}" alt="">
 
 		<form action="{% url 'contacts:login' %}" method="post" class="form-signin">
 			{% csrf_token %}
