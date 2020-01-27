@@ -73,7 +73,7 @@ button {
 .main-container {
 	flex: 1 0 auto;
 	text-align: center;
-	margin: 250px auto 0px;
+	margin: 250px auto 250px;
 	max-width: 400px;
 	width: 100%;
 	padding: 25px;
