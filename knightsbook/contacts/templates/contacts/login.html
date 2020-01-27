@@ -36,10 +36,13 @@
 	</ul>
 	{% endif %}
 
-	<div class="main-container">
+	<div class="headerCorner">
 		<h1><b>knights</b>book</h1>
+	</div>
 
+	<div class="main-container">
 		<img class = "logoLogin" src="{% static 'logo.png' %}" alt="">
+		<h1>Log in</h1>
 
 		<form action="{% url 'contacts:login' %}" method="post" class="form-signin">
 			{% csrf_token %}

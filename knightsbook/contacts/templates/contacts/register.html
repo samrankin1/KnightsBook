@@ -35,10 +35,12 @@
 	</ul>
 	{% endif %}
 
+	<div class="headerCorner">
+		<h1><b>knights</b>book</h1>
+	</div>
+
 	<div class="main-container">
-		<div class="headerCorner">
-			<h1><b>knights</b>book</h1>
-		</div>
+		<img class = "logoLogin" src="{% static 'logo.png' %}" alt="">
 		<h1>Register</h1>
 
 		<form action="{% url 'contacts:register' %}" method="post" class="form-signin">
@@ -51,6 +53,10 @@
 				<a href="{% url 'contacts:index' %}" class="veryBottomBTN">Home</a>
 		</div>
 	</div>
+
+	<footer>
+		<p>&#169;2020 Group 1</p>
+	</footer>
 
 </body>
 </html>
