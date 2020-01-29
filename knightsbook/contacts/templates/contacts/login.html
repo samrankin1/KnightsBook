@@ -13,8 +13,6 @@
 	<link href="{% static 'styles.css' %}" rel="stylesheet">
 	<script src="{% static 'jquery.js' %}"></script>
 	<script src="{% static 'md5.js' %}"></script>
-	<script src="{% static 'main.js' %}"></script>
-
 </head>
 <body class="form-pages">
 	{% if messages %}
@@ -44,11 +42,10 @@
 		<img class = "logoLogin" src="{% static 'logo.png' %}" alt="">
 		<h1>Log in</h1>
 
-		<form action="{% url 'contacts:login' %}" method="post" class="form-signin">
-			{% csrf_token %}
+		<form id="ajaxForm" action="{% url 'contacts:login' %}" method="post" class="form-signin">
 			<input type="email" name="email" placeholder="Email address" class="form-control" required autofocus>
 			<input type="password" name="password" id="password" placeholder="Password" class="form-control" required>
-			<button type="submit" onclick="return hashpw()" class="btn">Login</button>
+			<button id="ajaxSubmit" type="submit" class="btn">Login</button>
 		</form>
 		<div class="footnote">
 			<a href="{% url 'contacts:register' %}" class = "veryBottomBTN">Register</a></a>

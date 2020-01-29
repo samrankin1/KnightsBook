@@ -12,8 +12,6 @@
 
 	<link href="{% static 'styles.css' %}" rel="stylesheet">
 	<script src="{% static 'jquery.js' %}"></script>
-	<script src="{% static 'main.js' %}"></script>
-
 </head>
 <body class="form-pages">
 	{% if messages %}
@@ -40,8 +38,7 @@
 			<h1><b>knights</b>book</h1>
 		</div>
 	<h1>Edit Contact</h1>
-	<form action="{% url 'contacts:edit' id %}" method="post" class="form-signin">
-		{% csrf_token %}
+	<form id="ajaxForm" action="{% url 'contacts:edit' id %}" method="post" class="form-signin">
 		<input type="text" name="name_first" placeholder="First name" maxlength="40" value="{{ name_first }}" class="form-control" required autofocus>
 		<input type="text" name="name_last" placeholder="Last name" maxlength="40" value="{{ name_last }}" class="form-control" required>
 		<input type="text" name="phone_home" placeholder="Home phone" maxlength="20" value="{{ phone_home }}" class="form-control">
@@ -56,7 +53,7 @@
 			<option value="Teaching Assistant" {% if ucf_role == 'Teaching Assistant' %}selected{% endif %}>Teaching Assistant</option>
 			<option value="Professor" {% if ucf_role == 'Professor' %}selected{% endif %}>Professor</option>
 		</select>
-		<button type="submit" class="btn">Update</button>
+		<button id="ajaxSubmit" type="submit" class="btn">Update</button>
 	</form>
 	<div class="footnote">
 		<a href="{% url 'contacts:index' %}" class="veryBottomBTN">Home</a><br />
