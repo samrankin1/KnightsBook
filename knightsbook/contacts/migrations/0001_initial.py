@@ -3,7 +3,7 @@ from django.db import connection, migrations
 
 create_users_sql = 	"""
 	CREATE TABLE contacts_users (
-		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		id INTEGER PRIMARY KEY AUTO_INCREMENT,
 		email VARCHAR(100) UNIQUE NOT NULL,
 		password CHAR(32) NOT NULL,
 		activated INTEGER NOT NULL DEFAULT 0,
@@ -25,7 +25,7 @@ create_activations_sql = """
 
 create_contacts_sql = """
 	CREATE TABLE contacts_contacts (
-		id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+		id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
 		owner INTEGER NOT NULL,
 		name_first CHAR(40) NOT NULL,
 		name_last CHAR(40) NOT NULL,
