@@ -70,10 +70,21 @@ button {
     font-weight: bold;
 }
 
+.contact-container {
+	flex: 1 0 auto;
+	text-align: center;
+	margin: 10% auto 5%;
+	max-width: none;
+	width: 100%;
+	padding: 25px;
+	border-radius: 30px;
+	background-color: white;
+}
+
 .main-container {
 	flex: 1 0 auto;
 	text-align: center;
-	margin: 15% auto 5%;
+	margin: 12% auto 5%;
 	max-width: 400px;
 	width: 100%;
 	padding: 25px;
@@ -127,10 +138,9 @@ footer {
 	box-shadow: 2px 5px;
 }
 
-
 .footnote a {
 	display: inline-block;
-	text-decoration: underline;
+	text-decoration: none;
 	color: black;
 }
 
@@ -174,6 +184,19 @@ footer {
 	margin: 0;
 }
 
+table {
+	width: auto%;
+}
+
+th, td {
+	padding: 5px;
+	font-size: 1.25rem;
+}
+
+th {
+	text-align: left;
+}
+
 .topbar {
 	margin: 0;
 	padding: 0;
@@ -200,6 +223,22 @@ footer {
 	background-color: #272525;
 }
 
+select {
+	font-size: 16px;
+	line-height: 1.5;
+	margin-top: 10px;
+	margin-bottom: 10px;
+
+	border-radius: 5px 5px 5px 5px;
+	background-color: #fff;
+	border: 1px solid #ced4da;
+
+	padding: .5rem 1rem;
+	font-size: 1.25rem;
+	line-height: 1.5;
+	border-radius: .3rem;
+}
+
 .sidebar {
 	list-style-type: none;
 	margin: 0;
@@ -221,16 +260,22 @@ footer {
 .sidebar li {
 	margin:0;
 	padding:10;
-	border-bottom-style: solid;
-	border-bottom-width: 1px;
-	border-bottom-color: #aeaeae;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #aeaeae;
+	border-radius: .3rem;
+	background-color: white;
 }
 
 .sidebar a {
-	font-family: sans-serif;
-	font-size: 14px;
+	font-size: 1.25em;
 	text-decoration: none;
 	color: black;
+	padding: 5px;
+}
+
+.sidebar li:hover {
+	background-color: #ffcc00;
 }
 
 .searchbar {
@@ -246,7 +291,7 @@ footer {
 
 .searchbar input {
 	margin: 3px 0 3px 0;
-	padding: 3px;
+	padding: 5px;
 	font-size: 1.25em;
 	border-radius: 1rem;
 	border-width: 1px;
@@ -318,4 +363,8 @@ h2 {
 	font-size: 1.25rem;
 	line-height: 1.5;
 	border-radius: .3rem;
+}
+
+.veryBottomBTN:hover {
+	border-color: #ffcc00;
 }
