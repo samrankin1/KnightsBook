@@ -87,7 +87,7 @@ DATABASES = {
 		'OPTIONS': {
 			'database': 'knightsbook',
 			'user': 'knightsbook',
-			'password': 'B`H7.>O~@NPT2R@N',
+			'password': '***REMOVED***',
 		},
 	}
 }
