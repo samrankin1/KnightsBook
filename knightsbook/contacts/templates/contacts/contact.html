@@ -26,21 +26,51 @@
 	</ul>
 	{% endif %}
 
-	<h1>Contact View</h1>
-
-	First Name: {{ name_first }}<br />
-	Last Name: {{ name_last }}<br />
-	Home Phone: {{ phone_home }}<br />
-	Work Phone: {{ phone_work }}<br />
-	Street Address: {{ addr_street }}<br />
-	Address City: {{ addr_city }}<br />
-	UCF Major: {{ ucf_major }}<br />
-	UCF Graduation: {{ ucf_graduation }}<br />
-	UCF Role: {{ ucf_role }}<br /><br />
+	<div class="contact-container">
+		<h1>Contact: {{ name_first }} {{ name_last }}</h1>
+		<table align="center">
+			<tr>
+				<th><b>First Name:</b></th>
+				<td>{{ name_first }}</td>
+			</tr>
+			<tr>
+				<th><b>Last Name:</b></th>
+				<td>{{ name_last }}</td>
+			</tr>
+			<tr>
+				<th><b>Home Phone:</b></th>
+				<td>{{ phone_home }}</td>
+			</tr>
+			<tr>
+				<th><b>Work Phone:</b></th>
+				<td>{{ phone_work }}</td>
+			</tr>
+			<tr>
+				<th><b>Street Address:</b></th>
+				<td>{{ addr_street }}</td>
+			</tr>
+			<tr>
+				<th><b>Address City:</th>
+				<td>{{ addr_city }}</td>
+			</tr>
+			<tr>
+				<th><b>UCF Major:</b></th>
+				<td>{{ ucf_major }}</td>
+			</tr>
+			<tr>
+				<th><b>UCF Graduation:</b></th>
+				<td>{{ ucf_graduation }}</td>
+			</tr>
+			<tr>
+				<th><b>UCF Role:</b></th>
+				<td>{{ ucf_role }}</td>
+			</tr>
+		</table>
 
 	<div class="footnote">
-		<a href="{% url 'contacts:edit' id %}">Edit</a><br />
-		<a href="{% url 'contacts:delete' id %}">Delete</a>
+		<a href="{% url 'contacts:edit' id %}" class = "veryBottomBTN">Edit</a>
+		<a href="{% url 'contacts:delete' id %}" class = "veryBottomBTN">Delete</a>
 	</div>
+</div>
 </body>
 </html>
