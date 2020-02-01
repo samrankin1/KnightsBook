@@ -6,8 +6,12 @@ $(document).ready(function(){
         $(".alert").fadeOut(200);
     }); 
     $(".sidebar ul").find('a').click(function(e){
-    e.preventDefault();
-	var page = $(this).attr('href');
-	$(".content").load(page);
+        e.preventDefault();
+        var page = $(this).attr('href');
+        $(".content").load(page);
 	});
+    var $li = $('.sidebar li').click(function() {
+        $li.removeClass('on');
+        $(this).addClass('on');
+    });
 });
