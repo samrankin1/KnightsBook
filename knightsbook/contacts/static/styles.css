@@ -35,8 +35,8 @@ button {
 .alert-red {
 	padding: 10px;
 	color: #721c24;
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
+	background-color: #f8d7da;
+	border-color: #f5c6cb;
 }
 
 .alert-blue {
@@ -54,20 +54,20 @@ button {
 	top: 0;
 	margin: 0;
 	padding:0;
-    border: 1px solid transparent;
-    display: none;
-    z-index: 9999;
+	border: 1px solid transparent;
+	display: none;
+	z-index: 9999;
 }
 
 
 .close-alert {
 	float: right;
-    display: inline;
-    cursor: pointer;
-    height: 20px;
-    width: 20px;
-    margin: 0;
-    font-weight: bold;
+	display: inline;
+	cursor: pointer;
+	height: 20px;
+	width: 20px;
+	margin: 0;
+	font-weight: bold;
 }
 
 .contact-container {
@@ -99,15 +99,14 @@ footer {
 	width: 100%
 }
 
-
 .form-signin input[type="email"] {
-    margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
+	margin-bottom: -1px;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
 }
 .form-signin input[type="password"] {
-    border-top-right-radius: 0;
-    border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	border-top-left-radius: 0;
 }
 
 .form-signin .form-control {
@@ -124,13 +123,13 @@ footer {
 
 .btn {
 	display: block;
-    width: 100%;
-    padding: .5rem 1rem;
-    font-size: 1.25rem;
-    line-height: 1.5;
-    border-radius: .3rem;
-    margin-bottom: 10px;
-		background-color: #ffcc00;
+	width: 100%;
+	padding: .5rem 1rem;
+	font-size: 1.25rem;
+	line-height: 1.5;
+	border-radius: .3rem;
+	margin-bottom: 10px;
+	background-color: #ffcc00;
 }
 
 .btn:hover {
@@ -146,13 +145,13 @@ footer {
 
 .header {
 	background-color: black;
-  top: 0;
-  left: 0;
-  right: 0;
-  border-bottom-style: solid;
+	top: 0;
+	left: 0;
+	right: 0;
+	border-bottom-style: solid;
 	border-bottom-width: 1px;
 	border-bottom-color: black;
-  display: block;
+	display: block;
 	box-shadow: inset 0 -3em 3em rgba(255,255,255,0.15);
 }
 
@@ -167,9 +166,9 @@ footer {
 {
 	background-color: black;
 	top: 0;
-  left: 0px;
-  right: 0;
-  border-bottom-style: solid;
+	left: 0px;
+	right: 0;
+	border-bottom-style: solid;
 	border-bottom-width: 10px;
 	border-bottom-color: #ffcc00;
 	position: absolute;
@@ -204,7 +203,7 @@ th {
 	border-bottom-style: solid;
 	border-bottom-width: 1px;
 	border-bottom-color: black;
-	position: -webkit-sticky; /* Safari */
+	position: -webkit-sticky;
 	position: sticky;
 	top: 0;
 	background-color: #ffcc00;
@@ -259,7 +258,7 @@ select {
 
 .sidebar li {
 	margin:0;
-	padding:10;
+	padding: 0;
 	border-style: solid;
 	border-width: 1px;
 	border-color: #aeaeae;
@@ -268,14 +267,25 @@ select {
 }
 
 .sidebar a {
+	display: block;
+	margin: 0;
+	padding: 10px;
 	font-size: 1.25em;
 	text-decoration: none;
 	color: black;
-	padding: 5px;
+}
+
+.sidebar footer {
+	left: 0;
+	bottom: 0;
 }
 
 .sidebar li:hover {
 	background-color: #ffcc00;
+}
+
+.sidebar li.on {
+	background-color: #d9d9d9;
 }
 
 .searchbar {
@@ -316,9 +326,9 @@ select {
 	width:80%;
 	margin-left:20%;
 	justify-content: center;
-    align-content: center;
-    display: flex;
-}}
+	align-content: center;
+	display: flex;
+}
 
 .content {
 	width: 400px;
@@ -326,6 +336,7 @@ select {
 
 h2 {
 	font-family: sans-serif;
+	text-align: center;
 	font-size: 19px;
 	color: black;
 	padding: 10px;
@@ -333,29 +344,29 @@ h2 {
 
 .menu {
 	height: auto;
-  width: auto;
-  max-width: 26px;
-  max-height: 26px;
+	width: auto;
+	max-width: 26px;
+	max-height: 26px;
 }
 
 .logoLogin
 {
 	height: auto;
-  width: auto;
-  max-width: 100px;
-  max-height: 100px;
+	width: auto;
+	max-width: 100px;
+	max-height: 100px;
 }
 
 .veryBottomBTN
 {
 	font-size: 16px;
 	line-height: 1.5;
-  width: 90%;
-  margin-top: 10px;
+	width: 90%;
+	margin-top: 10px;
 	margin-bottom: 10px;
-  width:110px;
+	width:110px;
 
-  border-radius: 5px 5px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
 	background-color: #fff;
 	border: 1px solid #ced4da;
 
