@@ -180,6 +180,27 @@ def contact(request, contact_id):
 			'phone_work': phone_work, 'addr_street': addr_street, 'addr_city': addr_city,
 			'ucf_major': ucf_major, 'ucf_graduation': ucf_graduation, 'ucf_role': ucf_role})
 
+def contactJSON(request, contact_id):
+	if not 'user' in request.session:
+		return HttpResponseBadRequest('You are not authorized to view this contact')
+
+	user = request.session['user']
+	contact = db.get_contact(contact_id)
+
+	if not contact:
+		return HttpResponseNotFound('Contact not found')
+
+	owner, name_first, name_last, phone_home, phone_work, addr_street, addr_city, ucf_major, ucf_graduation, ucf_role = contact
+
+	if owner != user:
+		return HttpResponseBadRequest('You are not authorized to view this contact')
+	else:
+		return JsonResponse({
+			'id': contact_id, 'name_first': name_first, 'name_last': name_last,
+			'phone_home': phone_home, 'phone_work': phone_work, 'addr_street': addr_street, 'addr_city': addr_city,
+			'ucf_major': ucf_major, 'ucf_graduation': ucf_graduation, 'ucf_role': ucf_role
+		})
+
 def edit(request, contact_id):
 	if not 'user' in request.session:
 		notify.info(request, 'You must be logged in to edit a contact')
