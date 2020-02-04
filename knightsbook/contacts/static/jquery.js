@@ -24,6 +24,11 @@ $(document).ready(function() {
 		$(".content").load(page);
 	});
 
+	var $li = $('.sidebar li').click(function() {
+		$li.removeClass('on');
+		$(this).addClass('on');
+	});
+
 	$('#ajaxSubmit').click(function(e) {
 		e.preventDefault();
 
