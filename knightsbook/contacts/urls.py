@@ -17,6 +17,7 @@ urlpatterns = [
 	path('contacts/', views.contacts, name='contacts'),
 	path('create/', views.create, name='create'),
 	re_path(r'contacts/(?P<contact_id>\d+)$', views.contact, name='contact'),
+	re_path(r'contacts/(?P<contact_id>\d+)/json$', views.contactJSON, name='contactJSON'),
 	re_path(r'contacts/(?P<contact_id>\d+)/edit$', views.edit, name='edit'),
 	re_path(r'contacts/(?P<contact_id>\d+)/delete$', views.delete, name='delete'),
 ]

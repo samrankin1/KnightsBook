@@ -151,7 +151,7 @@ contacts_by_owner_sql = """
 contacts_by_owner_filtered_sql = """
 	SELECT id, name_first, name_last, phone_home, phone_work, addr_street, addr_city, ucf_major, ucf_graduation, ucf_role
 	FROM contacts_contacts
-	WHERE owner = %s AND (SELECT name_first || ' ' || name_last) LIKE %s
+	WHERE owner = %s AND CONCAT(name_first, ' ', name_last) LIKE %s
 """
 
 contact_update_sql = """

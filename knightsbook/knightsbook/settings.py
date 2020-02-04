@@ -25,7 +25,7 @@ SECRET_KEY = '***REMOVED***'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['knightsbook.samrank.in']
 
 
 # Application definition
@@ -42,7 +42,6 @@ MIDDLEWARE = [
 	'django.middleware.security.SecurityMiddleware',
 	'django.contrib.sessions.middleware.SessionMiddleware',
 	'django.middleware.common.CommonMiddleware',
-	'django.middleware.csrf.CsrfViewMiddleware',
 	'django.contrib.messages.middleware.MessageMiddleware',
 	'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -82,8 +81,14 @@ DEFAULT_FROM_EMAIL = 'KnightsBook Activation <knightsbooknoreply@gmail.com>'
 
 DATABASES = {
 	'default': {
-		'ENGINE': 'django.db.backends.sqlite3',
-		'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+		# 'ENGINE': 'django.db.backends.sqlite3',
+		# 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+		'ENGINE': 'django.db.backends.mysql',
+		'OPTIONS': {
+			'database': 'knightsbook',
+			'user': 'knightsbook',
+			'password': '***REMOVED***',
+		},
 	}
 }
 
